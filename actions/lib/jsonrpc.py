@@ -57,6 +57,7 @@ class JsonRPC(object):
         # interpret the response from the EXOS switch
         # first check the HTTP error code to see if HTTP was successful
         # delivering the message
+        # pylint: disable=no-member
         if response.status_code == requests.codes.ok:
             # if we have a cookie, store it so we can use it later
             self.cookie = response.cookies.get('session')
