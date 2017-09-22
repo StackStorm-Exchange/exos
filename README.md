@@ -1,19 +1,24 @@
-# StackStorm Exchange Incubator
+# EXOS Integration Pack
 
-### What is this?
+This pack allows you to run commands against Extreme EXOS-based devices
 
-This repository is a very special place where user-submitted packs get reviewed, perfected, approved, and finally transferred to the Exchange.
+## Configuration
 
-If you want to submit your pack, it's simple! **Fork this repo, create a subdirectory with your pack, and open a Pull Request.** We'll take it from here. Even if your pack is work-in-progress, you can still submit it to get advice and early feedback from our engineers! Or ping us [on Slack](https://stackstorm.com/community-signup), which is generally the best place to get advice from the StackStorm Community.
+Copy the example configuration in [exos.yaml.example](./exos.yaml.example)
+to `/opt/stackstorm/configs/exos.yaml` and edit as required.
 
-Before you submit a pack, make sure to read the [Create and Contribute a Pack](https://docs.stackstorm.com/reference/packs.html) section of our documentation.
+It must contain:
 
-Here's N.E.P.T.R. the StackStorm Exchange Governor, giving you a thumbs-up:
+* ``username`` - Email of the account being used for the integration
+* ``password`` - An API token generated in the admin interface
 
-![](http://i.imgur.com/3bqVAh0.gif)
+You can also use dynamic values from the datastore. See the
+[docs](https://docs.stackstorm.com/reference/pack_configs.html) for more info.
 
-## Contributors License Agreement
+**Note** : When modifying the configuration in `/opt/stackstorm/configs/` please
+           remember to tell StackStorm to load these new values by running
+           `st2ctl reload --register-configs`
 
-By contributing you agree that these contributions are your own (or approved by your employer) and
-you grant a full, complete, irrevocable copyright license to all users and developers of the
-project, present and future, pursuant to the license of the project.
+## Actions
+
+* ``cmd`` - Run a list of commands against an EXOS device

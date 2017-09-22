@@ -1,3 +1,4 @@
+---
 username:
     description: "Login username"
     type: "string"
