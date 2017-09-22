@@ -16,11 +16,12 @@ class JsonRPC(object):
         self.cookie = None
         # construct a URL template for the EXOS JSONRPC POST message
         self.url = 'http://{ip}/jsonrpc'.format(ip=self.ipaddress)
-        self.json_request = {'method': method,
-                             'id': self.transaction,
-                             'jsonrpc': '2.0',
-                             'params': None
-                            }
+        self.json_request = {
+            'method': method,
+            'id': self.transaction,
+            'jsonrpc': '2.0',
+            'params': None
+        }
 
     def send(self, cmds):
         # This method:
