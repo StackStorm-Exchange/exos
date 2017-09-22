@@ -2,6 +2,7 @@ import sys
 from lib.jsonrpc import JsonRPC
 from st2actions.runners.pythonrunner import Action
 
+
 class ExosCmd(Action):
 
     def run(self, ipaddress='10.68.65.81', cmd=''):

@@ -4,6 +4,8 @@ import requests
 #
 # This class contains the specifics of constructing a JSONRPC message and
 # returning the results
+
+
 class JsonRPC(object):
 
     def __init__(self, ipaddress, username=None, password=None, method='cli'):
@@ -14,10 +16,10 @@ class JsonRPC(object):
         self.cookie = None
         # construct a URL template for the EXOS JSONRPC POST message
         self.url = 'http://{ip}/jsonrpc'.format(ip=self.ipaddress)
-        self.json_request = {'method' : method,
-                            'id' : self.transaction,
-                            'jsonrpc' : '2.0',
-                            'params' : None
+        self.json_request = {'method': method,
+                             'id': self.transaction,
+                             'jsonrpc': '2.0',
+                             'params': None
                             }
 
     def send(self, cmds):
@@ -47,9 +49,9 @@ class JsonRPC(object):
 
         # send the JSONRPC message to the EXOS switch
         response = requests.post(self.url,
-            headers=headers,
-            auth=(self.username, self.password),
-            data=json.dumps(self.json_request))
+                                 headers=headers,
+                                 auth=(self.username, self.password),
+                                 data=json.dumps(self.json_request))
 
         # interpret the response from the EXOS switch
         # first check the HTTP error code to see if HTTP was successful
@@ -70,7 +72,7 @@ class JsonRPC(object):
         if rslt_list is None:
             raise ValueError("JSON result field is not present in response")
 
-        #handle debug cfgmgr cli
+        # handle debug cfgmgr cli
         if isinstance(rslt_list, dict):
             debug_data = rslt_list.get('data')
             if debug_data is not None:
